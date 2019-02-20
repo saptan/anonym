@@ -1,4 +1,4 @@
-package ru.saptan.anoniim
+package ru.saptan.anonym
 
 import org.junit.Test
 
