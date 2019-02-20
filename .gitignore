@@ -1,0 +1,14 @@
+# Directories
+.gradle/
+.idea/
+.navigation/
+build/
+captures/
+
+
+# Files
+.DS_Store
+local.properties
+
+# Extensions
+*.iml
