@@ -3,6 +3,7 @@ package ru.saptan.anonym.app
 import android.content.Context
 import ru.saptan.anonym.app.injections.global.AppComponent
 import ru.saptan.anonym.app.injections.global.AppModule
+import ru.saptan.anonym.app.injections.global.DaggerAppComponent
 
 object ComponentProvider {
 

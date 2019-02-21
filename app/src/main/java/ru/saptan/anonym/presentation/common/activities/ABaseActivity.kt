@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatActivity
+import ru.saptan.anonym.R
 import ru.saptan.anonym.presentation.common.Layout
 import ru.saptan.anonym.presentation.common.actions.Action
 import ru.saptan.anonym.presentation.common.actions.NetworkErrorActionView
@@ -118,22 +119,6 @@ abstract class ABaseActivity : MvpAppCompatActivity() {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(show)
             actionBar.setDisplayShowHomeEnabled(show)
-        }
-    }
-
-    fun showCloseInToolBar(show: Boolean) {
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(show)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_close)
-        }
-    }
-
-    fun showLogoInToolBar(show: Boolean) {
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(show)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_logo_toolbar)
         }
     }
 

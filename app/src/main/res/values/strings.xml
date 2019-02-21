@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Anoniim</string>
+    <string name="app_name">ANONYM</string>
+    <string name="message_error_retry">Повторить</string>
+    <string name="message_error_while_loading">Ошибка при загрузке</string>
 </resources>

@@ -5,6 +5,7 @@ import android.support.annotation.StringRes
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import ru.saptan.anonym.R
 import ru.saptan.anonym.presentation.common.list.AListAdapter
 import ru.saptan.anonym.presentation.common.list.EmptyRecyclerView
 import ru.saptan.anonym.presentation.common.list.IEmptyView
