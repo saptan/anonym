@@ -8,9 +8,10 @@ import ru.saptan.anonym.domain.model.rest.PostListRequest
 
 @RealmClass
 open class PostRealm : RealmModel {
+
     @PrimaryKey
     var id: Int = 0
-    var type: Int = PostListRequest.TYPE_POST_NEW
+    var type: Int = PostListRequest.TYPE_POST_POPULAR
     var text: String? = null
     var date: Long? = 0L
     var category: Int? = 0

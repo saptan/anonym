@@ -13,6 +13,8 @@ buildscript {
         rxjava2_version = '2.1.10'
         rxandroid_version = '2.0.2'
         rxjava2_adapter_version = '1.0.0'
+
+        glide_version = '4.9.0'
     }
 
     repositories {

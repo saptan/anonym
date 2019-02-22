@@ -7,10 +7,10 @@ import ru.saptan.anonym.presentation.common.IView
 interface IListView<D> : IView {
 
     @StateStrategyType(SingleStateStrategy::class)
-    fun setData(dataSet: MutableList<D>)
+    fun setData(dataSet: List<D>)
 
     @StateStrategyType(SingleStateStrategy::class)
-    fun addData(dataSet: MutableList<D>)
+    fun addData(dataSet: List<D>)
 
     @StateStrategyType(SingleStateStrategy::class)
     fun clearData()

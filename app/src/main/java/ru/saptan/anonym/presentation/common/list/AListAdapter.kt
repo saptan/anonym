@@ -1,7 +1,9 @@
 package ru.saptan.anonym.presentation.common.list
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
+import ru.saptan.anonym.presentation.common.onClickListen
 
 
 abstract class AListAdapter<D, VH : RecyclerView.ViewHolder> : RecyclerView.Adapter<VH>() {
@@ -13,7 +15,7 @@ abstract class AListAdapter<D, VH : RecyclerView.ViewHolder> : RecyclerView.Adap
         set(value) {
             field = value
             isNeedShowEmptyView = dataSet.isEmpty()
-            notifyDataSetChanged()
+//            notifyDataSetChanged()
         }
 
     var isNeedShowEmptyView: Boolean = false
@@ -29,7 +31,7 @@ abstract class AListAdapter<D, VH : RecyclerView.ViewHolder> : RecyclerView.Adap
         return dataSet.size
     }
 
-    fun add2DataSet(dataSet: MutableList<D>) {
+    fun add2DataSet(dataSet: List<D>) {
         var needInvalidateList = false
         for (d in dataSet) {
             if (!this.dataSet.contains(d)) {
@@ -41,7 +43,7 @@ abstract class AListAdapter<D, VH : RecyclerView.ViewHolder> : RecyclerView.Adap
             notifyDataSetChanged()
     }
 
-    fun add2End(data: MutableList<D>) {
+    fun add2End(data: List<D>) {
         if (dataSet.isEmpty()) {
             add2DataSet(data)
         }
@@ -61,6 +63,12 @@ abstract class AListAdapter<D, VH : RecyclerView.ViewHolder> : RecyclerView.Adap
         notifyDataSetChanged()
     }
 
+    open fun createDefaultViewHolder(itemView: View): DefaultViewHolder<D> {
+        return DefaultViewHolder<D>(itemView).onClickListen { position ->
+            onDataClickListener?.invoke(dataSet[position])
+        }
+    }
+
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         bindDefaultViewHolder(holder as DefaultViewHolder<D>, position)
@@ -71,6 +79,8 @@ abstract class AListAdapter<D, VH : RecyclerView.ViewHolder> : RecyclerView.Adap
             return
         val d = dataSet[position]
         holder.view.bind(d)
+
+        Log.d("TAG_BIND", "bind, position = $position")
     }
 
     fun onDestroy() {
@@ -78,16 +88,7 @@ abstract class AListAdapter<D, VH : RecyclerView.ViewHolder> : RecyclerView.Adap
     }
 
 
-    inner class DefaultViewHolder<D>(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class DefaultViewHolder<D>(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var view: IListItemView<D> = itemView as IListItemView<D>
-
-        init {
-            itemView.setOnClickListener {
-                View.OnClickListener {
-                    onDataClickListener?.invoke(dataSet[adapterPosition])
-                }
-            }
-        }
-
     }
 }

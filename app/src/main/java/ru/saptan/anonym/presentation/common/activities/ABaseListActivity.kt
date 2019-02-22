@@ -14,7 +14,7 @@ import ru.saptan.anonym.presentation.common.list.IEmptyView
 abstract class ABaseListActivity<D, VH : RecyclerView.ViewHolder> : ABaseActivity() {
     lateinit var recyclerView: EmptyRecyclerView
     var emptyView: IEmptyView? = null
-    private lateinit var adapter: AListAdapter<D, VH>
+    protected lateinit var adapter: AListAdapter<D, VH>
     private lateinit var layoutManager: RecyclerView.LayoutManager
     protected var isDoScrollDown = true
     @get:StringRes
@@ -27,6 +27,7 @@ abstract class ABaseListActivity<D, VH : RecyclerView.ViewHolder> : ABaseActivit
         emptyView = findViewById<View>(R.id.emptyView) as? IEmptyView
         recyclerView.setEmptyView(emptyView, emptyViewText)
         recyclerView.setHasFixedSize(true)
+        recyclerView.addItemDecoration(initItemDecorator())
         layoutManager = initLayoutManager()
         recyclerView.layoutManager = layoutManager
         adapter = initAdapter()
@@ -37,11 +38,11 @@ abstract class ABaseListActivity<D, VH : RecyclerView.ViewHolder> : ABaseActivit
         adapter.clearData()
     }
 
-    fun setData(dataSet: MutableList<D>) {
-        adapter.dataSet = dataSet
+    open fun setData(dataSet: List<D>) {
+        adapter.dataSet = dataSet.toMutableList()
     }
 
-    fun addData(dataSet: MutableList<D>) {
+    open fun addData(dataSet: List<D>) {
         adapter.add2End(dataSet)
         releaseScroll()
     }
@@ -49,6 +50,8 @@ abstract class ABaseListActivity<D, VH : RecyclerView.ViewHolder> : ABaseActivit
     protected abstract fun initAdapter(): AListAdapter<D, VH>
 
     protected abstract fun initLayoutManager(): RecyclerView.LayoutManager
+
+    abstract fun initItemDecorator(): RecyclerView.ItemDecoration
 
     override fun initListeners() {
         super.initListeners()

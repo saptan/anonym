@@ -1,3 +1,3 @@
 package ru.saptan.anonym.domain.model.data
 
-data class ListPosts(var data: List<>)
+data class ListPostsResponse(var data: List<Post>)

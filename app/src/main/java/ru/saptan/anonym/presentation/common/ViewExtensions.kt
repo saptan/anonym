@@ -3,6 +3,7 @@ package ru.saptan.anonym.presentation.common
 import android.content.Context
 import android.view.View
 import android.widget.Toast
+import ru.saptan.anonym.presentation.common.list.AListAdapter
 
 
 fun Context.showToast(message: CharSequence) =
@@ -13,5 +14,12 @@ fun Context.showToast(message: CharSequence, duration: Int) =
 
 
 fun View.setVisibility(enable: Boolean) {
-    this.visibility = if (enable)  View.VISIBLE else View.GONE
+    this.visibility = if (enable) View.VISIBLE else View.GONE
+}
+
+fun <D> AListAdapter.DefaultViewHolder<D>.onClickListen(event: (position: Int) -> Unit): AListAdapter.DefaultViewHolder<D> {
+    itemView.setOnClickListener {
+        event.invoke(adapterPosition)
+    }
+    return this
 }
