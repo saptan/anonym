@@ -19,6 +19,6 @@
         android:textSize="21sp"
         android:maxLines="1"
         android:ellipsize="end"
-        android:textStyle="bold" />
+        android:textStyle="normal" />
 
 </android.support.v7.widget.Toolbar>

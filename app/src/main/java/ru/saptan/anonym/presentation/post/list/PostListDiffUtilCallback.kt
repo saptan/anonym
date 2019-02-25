@@ -1,5 +1,6 @@
 package ru.saptan.anonym.presentation.post.list
 
+import android.support.annotation.Nullable
 import android.support.v7.util.DiffUtil
 import ru.saptan.anonym.domain.model.data.Post
 
@@ -22,6 +23,11 @@ class PostListDiffUtilCallback(val oldList: List<Post>, val newList: List<Post>)
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         val oldPost = oldList[oldItemPosition]
         val newPost = newList[newItemPosition]
-        return oldPost.text.equals(newPost.text) && oldPost.getMediumPhotoUrl()?.equals(newPost.getMediumPhotoUrl()) ?: false
+        return oldPost.text.equals(newPost.text) && oldPost.getPreviewPhotoUrl()?.equals(newPost.getPreviewPhotoUrl()) ?: false
+    }
+
+    @Nullable
+    override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {
+        return super.getChangePayload(oldItemPosition, newItemPosition)
     }
 }

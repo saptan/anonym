@@ -11,7 +11,5 @@ class PostInteractor(private val repository: IPostRepository) : ABaseInteractor(
 
     override fun getPosts(): Observable<List<Post>> = repository.getPosts()
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-
-
+            .observeOn(AndroidSchedulers.mainThread(), true)
 }

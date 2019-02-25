@@ -15,7 +15,7 @@ class PostRepository(private val localStorage: IPostLocalStorage,
     override fun getPosts(): Observable<List<Post>> {
         val localSource = Observable.fromCallable { localStorage.getPostsFromCache(request.type) }
         val remoteSource = getRemotePosts()
-        return Observable.concat(localSource, remoteSource)
+        return Observable.mergeDelayError(localSource, remoteSource)
     }
 
     private fun getRemotePosts() = restApi.getRemotePosts(request)

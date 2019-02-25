@@ -44,7 +44,7 @@ class PostListActivity : ABaseSwipeListActivity<Post, AListAdapter.DefaultViewHo
 
     override fun initLayoutManager() = LinearLayoutManager(this)
 
-    override fun initItemDecorator() = SpaceItemDecoration(this)
+    override fun initItemDecorator() = SpaceItemDecoration(this, 6F, 8F)
 
     override fun onRefresh() {
         presenter.onRefresh()

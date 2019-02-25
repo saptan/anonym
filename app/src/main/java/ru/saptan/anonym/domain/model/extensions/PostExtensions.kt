@@ -19,7 +19,7 @@ fun Post.map2realm(): PostRealm {
         postRealm.ownerPhoto = ownerPhoto
         postRealm.countReposts = countReposts ?: 0
         postRealm.countViews = postviews?.count ?: 0
-        postRealm.countLikes = postLikes?.count ?: 0
+        postRealm.countLikes = likes?.count ?: 0
         postRealm.countComments = comments?.count ?: 0
         postRealm.attachments = attachments?.map2RealmList(id)
     }
@@ -39,7 +39,7 @@ fun PostRealm.map2Data(): Post {
         post.ownerPhoto = ownerPhoto
         post.countReposts = countReposts
         post.postviews = PostCountStat(countViews)
-        post.postLikes = PostCountStat(countLikes)
+        post.likes = PostCountStat(countLikes)
         post.comments = PostCountStat(countComments)
         post.attachments = attachments?.map2DataList()
     }
