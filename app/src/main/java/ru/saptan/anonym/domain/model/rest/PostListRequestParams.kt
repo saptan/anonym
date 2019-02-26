@@ -28,8 +28,15 @@ data class PostListRequestParams(var type: Int = POPULAR, var offset: Int = 0,
     /**
      * Подготовить параметры запроса для загрузки следующей страницы постов
      */
-    fun prepareNextPage() = { offset += count }
+    fun prepareNextPage() = apply { offset += count }
 
 
     fun isFirstPage() = offset == 0
+
+    /**
+     * Проверяет сколько было загружено постов с бэка, если максимальное количество было достигнуто,
+     * то прекратить подгрузку данных. Пока ограничение на 10 000 постов, но конечно
+     * лучше будет проверять при каждом получении новой порции постов есть ли еще данные на бэке.
+     */
+    fun isLastPage() = offset <= 10_000
 }

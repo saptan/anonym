@@ -22,6 +22,8 @@ fun Post.map2realm(): PostRealm {
         postRealm.countLikes = likes?.count ?: 0
         postRealm.countComments = comments?.count ?: 0
         postRealm.attachments = attachments?.map2RealmList(id)
+        postRealm.createdAt = createdAt
+
     }
     return postRealm
 }
@@ -42,6 +44,7 @@ fun PostRealm.map2Data(): Post {
         post.likes = PostCountStat(countLikes)
         post.comments = PostCountStat(countComments)
         post.attachments = attachments?.map2DataList()
+        post.createdAt = createdAt
     }
     return post
 }

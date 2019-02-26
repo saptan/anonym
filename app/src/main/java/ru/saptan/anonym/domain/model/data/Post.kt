@@ -12,7 +12,8 @@ class Post(var id: Int = 0, var text: String? = null, var date: Long? = 0L, var 
            var postviews: PostCountStat? = null,
            var likes: PostCountStat? = null,
            var comments: PostCountStat? = null,
-           var attachments: List<PostAttachment>? = null) {
+           var attachments: List<PostAttachment>? = null,
+           var createdAt: Long = 0L) {
 
     fun getPreviewPhotoUrl(): String? {
         return attachments

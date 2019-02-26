@@ -26,6 +26,9 @@ class PostListActivity : ABaseSwipeListActivity<Post, AListAdapter.DefaultViewHo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTitleToolbar(R.string.app_name)
+
+        val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+        recyclerView.addOnScrollListener(presenter.initScrollListener(layoutManager))
     }
 
     override fun inject() {
@@ -52,5 +55,13 @@ class PostListActivity : ABaseSwipeListActivity<Post, AListAdapter.DefaultViewHo
 
     override fun setData(dataSet: List<Post>) {
         (adapter as PostListAdapter).setData(dataSet)
+    }
+
+    override fun showLoadingFooter() {
+        (adapter as PostListAdapter).showLoadingFooter()
+    }
+
+    override fun hideLoadingFooter() {
+        (adapter as PostListAdapter).hideLoadingFooter()
     }
 }

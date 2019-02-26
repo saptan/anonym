@@ -30,9 +30,20 @@ class PostRepository(private val localStorage: IPostLocalStorage,
     private fun getRemotePosts(requestParams: PostListRequestParams): Observable<List<Post>> {
         return restApi.getRemotePosts(requestParams)
                 .map {
-                    // Перед сохранением в бд нужно запомнить тип поста (новый или популярный)
+                    var index = 0
+                    // Пока непонятно за что отвечает поле type, приходящее с бэкенда, т.к. при
+                    // запросе постов с типом 1 (Новые), могут прийти посты с типов 2 (Популярные)
+                    // и наоборот. Поэтому здесь выполняется дополнительный маппинг,
                     // чтобы потом можно было быстренько из кеша подтянуть нужные данные
-                    it.data.forEach { post -> post.type = requestParams.type }
+
+                    // Также неизвестен принцип сортировки постов, набирующих популярность. Поэтому
+                    // чтобы лента постов полученная из кеша отображала посты в нужном порядки, добавлено
+                    // поле createdAt, именно по этому полю буду отсортированы все посты
+                    it.data.forEach { post ->
+                        post.type = requestParams.type
+                        post.createdAt = System.currentTimeMillis() + index
+                        index++
+                    }
                     return@map it.data
                 }
                 .doOnNext {

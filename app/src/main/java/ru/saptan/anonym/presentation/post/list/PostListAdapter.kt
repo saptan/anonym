@@ -3,22 +3,32 @@ package ru.saptan.anonym.presentation.post.list
 import android.support.v7.util.DiffUtil
 import android.view.ViewGroup
 import ru.saptan.anonym.domain.model.data.Post
+import ru.saptan.anonym.presentation.common.ABaseView
 import ru.saptan.anonym.presentation.common.list.AListAdapter
-
 
 class PostListAdapter : AListAdapter<Post, AListAdapter.DefaultViewHolder<Post>>() {
 
-    companion object Payload {
+    private var isLoadingAdded = false
+
+    companion object {
         const val CHANGED_IMAGE = "image"
         const val CHANGED_TEXT = "text"
         const val CHANGED_COUNT_LIKES = "likes"
         const val CHANGED_COUNT_COMMENTS = "comments"
         const val CHANGED_COUNT_REPOSTS = "reposts"
+
+        const val ITEM_TYPE_POST = 0
+        const val ITEM_TYPE_LOADING = 1
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DefaultViewHolder<Post> {
         val context = parent.context
-        val view = PostItemView(context)
+
+        val view: ABaseView = when (viewType) {
+            ITEM_TYPE_LOADING -> LoadingItemView(context)
+            else -> PostItemView(context) //ITEM_TYPE_POST
+        }
+
         return createDefaultViewHolder(view)
     }
 
@@ -50,4 +60,27 @@ class PostListAdapter : AListAdapter<Post, AListAdapter.DefaultViewHolder<Post>>
         dataSet = posts.toMutableList()
         productDiffResult.dispatchUpdatesTo(this)
     }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (position == dataSet.lastIndex && isLoadingAdded) ITEM_TYPE_LOADING else ITEM_TYPE_POST
+    }
+
+    fun showLoadingFooter() {
+        isLoadingAdded = true
+        dataSet.add(Post())
+        notifyItemInserted(dataSet.lastIndex)
+    }
+
+    fun hideLoadingFooter() {
+        isLoadingAdded = false
+        val itemLoader = dataSet.lastOrNull()
+
+        val footerPosition = dataSet.lastIndex
+        if (itemLoader != null) {
+            dataSet.removeAt(footerPosition)
+            notifyItemRemoved(footerPosition)
+        }
+    }
+
+
 }

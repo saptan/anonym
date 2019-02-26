@@ -7,6 +7,7 @@ import com.arellomobile.mvp.MvpView
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import ru.saptan.anonym.domain.repositories.common.exceptions.RepositoryException
+import java.net.UnknownHostException
 
 
 abstract class ABasePresenter<View : MvpView> : MvpPresenter<View>(), SimpleLogging {
@@ -39,6 +40,11 @@ abstract class ABasePresenter<View : MvpView> : MvpPresenter<View>(), SimpleLogg
                 return errorMessage
             }
         }
+
+        if (t is UnknownHostException) {
+            return "Нет доступа к Интернету"
+        }
+
         return "Ошибка сети"
     }
 
