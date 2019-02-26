@@ -1,6 +1,7 @@
 package ru.saptan.anonym.domain.repositories.post
 
 import io.reactivex.Observable
+import io.reactivex.Single
 import ru.saptan.anonym.app.Const
 import ru.saptan.anonym.domain.model.data.Post
 import ru.saptan.anonym.domain.model.rest.PostListRequestParams
@@ -53,4 +54,7 @@ class PostRepository(private val localStorage: IPostLocalStorage,
                 }
     }
 
+    override fun getPostById(postId: Int): Single<Post?> {
+        return Single.fromCallable { localStorage.getPostById(postId) }
+    }
 }

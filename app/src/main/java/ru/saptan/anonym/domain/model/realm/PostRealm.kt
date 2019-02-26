@@ -26,6 +26,7 @@ open class PostRealm : RealmModel {
     var countComments: Int = 0
 
     var attachments: RealmList<PostAttachmentRealm>? = null
+    var tags: RealmList<String>? = null
 
     var createdAt: Long = 0L
 }

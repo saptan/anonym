@@ -13,4 +13,7 @@ interface IPostLocalStorage {
 
     fun savePosts(posts: List<Post>, clearCache: Boolean)
 
+    fun getPostById(postId: Int): Post?
+
+
 }

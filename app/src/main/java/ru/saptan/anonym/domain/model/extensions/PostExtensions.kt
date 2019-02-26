@@ -23,6 +23,7 @@ fun Post.map2realm(): PostRealm {
         postRealm.countComments = comments?.count ?: 0
         postRealm.attachments = attachments?.map2RealmList(id)
         postRealm.createdAt = createdAt
+        postRealm.tags = tags?.mapStrings2RealmList()
 
     }
     return postRealm
@@ -45,6 +46,7 @@ fun PostRealm.map2Data(): Post {
         post.comments = PostCountStat(countComments)
         post.attachments = attachments?.map2DataList()
         post.createdAt = createdAt
+        post.tags = tags
     }
     return post
 }
@@ -56,6 +58,11 @@ fun List<Post>.map2RealmList(): RealmList<PostRealm> {
     return rl
 }
 
+fun List<String>.mapStrings2RealmList(): RealmList<String> {
+    val rl = RealmList<String>()
+    this.forEach { rl.add(it) }
+    return rl
+}
 
 fun MutableList<PostRealm>.map2DataList(): List<Post> {
     val l = ArrayList<Post>()

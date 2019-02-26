@@ -2,6 +2,7 @@ package ru.saptan.anonym.domain.repositories.post.local
 
 import io.realm.Realm
 import ru.saptan.anonym.domain.model.data.Post
+import ru.saptan.anonym.domain.model.extensions.map2Data
 import ru.saptan.anonym.domain.model.extensions.map2DataList
 import ru.saptan.anonym.domain.model.extensions.map2RealmList
 import ru.saptan.anonym.domain.model.realm.PostRealm
@@ -21,6 +22,16 @@ class PostLocalStorage : BaseLocalStorageRealm(), IPostLocalStorage {
         }
     }
 
+    override fun getPostById(postId: Int): Post? {
+        Realm.getDefaultInstance().use { realm ->
+            val result = realm
+                    .where(PostRealm::class.java)
+                    .equalTo("id", postId)
+                    .findFirst() ?: return null
+
+            return realm.copyFromRealm(result).map2Data()
+        }
+    }
 
     override fun savePosts(posts: List<Post>, clearCache: Boolean) {
         Realm.getDefaultInstance().use { realm ->

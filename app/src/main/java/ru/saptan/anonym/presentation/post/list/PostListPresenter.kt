@@ -49,7 +49,7 @@ class PostListPresenter @Inject constructor(
     }
 
     fun onPostClicked(post: Post) {
-        viewState.showToast("Post with id = ${post.id}")
+        router.openPostDetailActivity(context, post.id)
     }
 
     fun onRefresh() {

@@ -9,6 +9,7 @@ class Post(var id: Int = 0, var text: String? = null, var date: Long? = 0L, var 
            @SerializedName("owner_id") var ownerId: Int? = 0,
            @SerializedName("owner_photo") var ownerPhoto: String? = "",
            @SerializedName("reposts") var countReposts: Int? = 0,
+           var tags: List<String>? = null,
            var postviews: PostCountStat? = null,
            var likes: PostCountStat? = null,
            var comments: PostCountStat? = null,

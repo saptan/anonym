@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_with_title_center" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/ChecklistFragment_NestedScrollViewChecklist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cvRoot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <ImageView
+                                android:id="@+id/ivPhotoAttachment"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitXY" />
+
+                            <TextView
+                                android:id="@+id/tvDescription"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="24dp"
+                                android:layout_marginEnd="24dp"
+                                android:layout_marginBottom="24dp"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp"
+                                tools:text="Когда мы были младше, мы прятали руки под рубашку и говорили людям, что потеряли руки. Перезагружали видеоигры, когда знали, что проиграем. Спали со всеми игрушками, чтобы никто из них не обиделся. В ручке, с несколькими цветами, пытались нажать на все кнопки сразу." />
+
+                            <TextView
+                                android:id="@+id/tvTags"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="24dp"
+                                android:layout_marginBottom="8dp"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp"
+                                tools:text="#про#носки#муж" />
+
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginEnd="10dp">
+
+                                <ru.saptan.anonym.presentation.common.CounterSocialActionsView
+                                    android:id="@+id/csavLikes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="10dp"
+                                    app:content_align="LEFT"
+                                    app:icon="@drawable/ic_like"
+                                    app:title="понравилось" />
+
+
+                                <ru.saptan.anonym.presentation.common.CounterSocialActionsView
+                                    android:id="@+id/csavReposts"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    app:content_align="CENTER"
+                                    app:icon="@drawable/ic_share"
+                                    app:title="поделиться" />
+
+                                <ru.saptan.anonym.presentation.common.CounterSocialActionsView
+                                    android:id="@+id/csavComments"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical|end"
+                                    android:layout_marginStart="10dp"
+                                    app:content_align="RIGHT"
+                                    app:icon="@drawable/ic_comment"
+                                    app:title="комментарии" />
+
+                            </FrameLayout>
+                        </LinearLayout>
+
+
+                    </FrameLayout>
+
+
+                </android.support.v7.widget.CardView>
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
