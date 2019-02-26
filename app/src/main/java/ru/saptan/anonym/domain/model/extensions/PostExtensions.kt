@@ -4,13 +4,13 @@ import io.realm.RealmList
 import ru.saptan.anonym.domain.model.data.Post
 import ru.saptan.anonym.domain.model.data.PostCountStat
 import ru.saptan.anonym.domain.model.realm.PostRealm
-import ru.saptan.anonym.domain.model.rest.PostListRequest
+import ru.saptan.anonym.domain.model.rest.PostListRequestParams
 
 fun Post.map2realm(): PostRealm {
     val postRealm = PostRealm()
     with(this) {
         postRealm.id = id
-        postRealm.type = type ?: PostListRequest.TYPE_POST_POPULAR
+        postRealm.type = type ?: PostListRequestParams.POPULAR
         postRealm.text = text
         postRealm.date = date
         postRealm.category = category

@@ -1,10 +1,10 @@
 package ru.saptan.anonym.domain.model.data
 
 import com.google.gson.annotations.SerializedName
-import ru.saptan.anonym.domain.model.rest.PostListRequest
+import ru.saptan.anonym.domain.model.rest.PostListRequestParams
 
 class Post(var id: Int = 0, var text: String? = null, var date: Long? = 0L, var category: Int? = 0,
-           var type: Int? = PostListRequest.TYPE_POST_POPULAR,
+           var type: Int? = PostListRequestParams.POPULAR,
            @SerializedName("owner_name") var ownerName: String? = "",
            @SerializedName("owner_id") var ownerId: Int? = 0,
            @SerializedName("owner_photo") var ownerPhoto: String? = "",

@@ -19,10 +19,10 @@ class PostLocalStorage : BaseLocalStorageRealm(), IPostLocalStorage {
     }
 
 
-    override fun savePosts(posts: List<Post>) {
+    override fun savePosts(posts: List<Post>, clearCache: Boolean) {
         Realm.getDefaultInstance().use { realm ->
-            delete(PostRealm::class.java, realm)
-            saveChanges(posts.map2RealmList(), realm)
+            if (clearCache) delete(PostRealm::class.java, realm)
+            return@use saveChanges(posts.map2RealmList(), realm)
         }
     }
 

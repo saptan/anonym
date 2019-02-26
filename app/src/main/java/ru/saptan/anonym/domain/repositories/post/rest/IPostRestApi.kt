@@ -2,9 +2,8 @@ package ru.saptan.anonym.domain.repositories.post.rest
 
 import io.reactivex.Observable
 import ru.saptan.anonym.domain.model.data.ListPostsResponse
-import ru.saptan.anonym.domain.model.data.Post
-import ru.saptan.anonym.domain.model.rest.PostListRequest
+import ru.saptan.anonym.domain.model.rest.PostListRequestParams
 
 interface IPostRestApi {
-    fun getRemotePosts(request: PostListRequest): Observable<ListPostsResponse>
+    fun getRemotePosts(requestParams: PostListRequestParams): Observable<ListPostsResponse>
 }
