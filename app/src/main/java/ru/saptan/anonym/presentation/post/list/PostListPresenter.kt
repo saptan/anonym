@@ -23,6 +23,7 @@ class PostListPresenter @Inject constructor(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        viewState.setWidgetTypePost(requestParams.type)
         loadPost()
     }
 
@@ -107,5 +108,13 @@ class PostListPresenter @Inject constructor(
                     viewState.showToast(getErrorText(error))
                 }
         ))
+    }
+
+    fun onChoseTypePostClicked() {
+        viewState.showChoosingTypeDialog { selectedType ->
+            requestParams.type = selectedType
+            viewState.setWidgetTypePost(selectedType)
+            loadPost()
+        }
     }
 }

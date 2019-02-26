@@ -132,7 +132,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
                             android:layout_margin="8dp"
-                            android:background="@drawable/bg_widget_count_views">
+                            android:background="@drawable/bg_widget_black_transparent">
 
                             <ru.saptan.anonym.presentation.common.CounterSocialActionsView
                                 android:id="@+id/csavViews"

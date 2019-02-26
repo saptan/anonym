@@ -3,4 +3,13 @@
     <string name="message_error_retry">Повторить</string>
     <string name="message_error_while_loading">Ошибка при загрузке</string>
     <string name="message_empty_view_posts">Нет данных</string>
+
+    <string name="dialog_title_choose_type">Выберите тип</string>
+    <string name="type_post_popular">Набирающее популярность</string>
+    <string name="type_post_new">Новое</string>
+
+    <string-array name="items_type_post">
+        <item>@string/type_post_popular</item>
+        <item>@string/type_post_new</item>
+    </string-array>
 </resources>

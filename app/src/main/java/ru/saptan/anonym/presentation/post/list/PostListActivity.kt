@@ -1,12 +1,16 @@
 package ru.saptan.anonym.presentation.post.list
 
+import android.content.DialogInterface
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import kotlinx.android.synthetic.main.activity_post_list.*
 import ru.saptan.anonym.R
 import ru.saptan.anonym.app.ComponentProvider
 import ru.saptan.anonym.domain.model.data.Post
+import ru.saptan.anonym.domain.model.rest.PostListRequestParams
 import ru.saptan.anonym.presentation.common.Layout
 import ru.saptan.anonym.presentation.common.SpaceItemDecoration
 import ru.saptan.anonym.presentation.common.activities.ABaseSwipeListActivity
@@ -29,6 +33,8 @@ class PostListActivity : ABaseSwipeListActivity<Post, AListAdapter.DefaultViewHo
 
         val layoutManager = recyclerView.layoutManager as LinearLayoutManager
         recyclerView.addOnScrollListener(presenter.initScrollListener(layoutManager))
+
+        flTypePost.setOnClickListener { presenter.onChoseTypePostClicked() }
     }
 
     override fun inject() {
@@ -63,5 +69,28 @@ class PostListActivity : ABaseSwipeListActivity<Post, AListAdapter.DefaultViewHo
 
     override fun hideLoadingFooter() {
         (adapter as PostListAdapter).hideLoadingFooter()
+    }
+
+    override fun setWidgetTypePost(type: Int) {
+        tvTypePost.text = when (type) {
+            PostListRequestParams.NEW -> getString(R.string.type_post_new)
+            else -> getString(R.string.type_post_popular) // PostListRequestParams.POPULAR
+        }
+    }
+
+    override fun showChoosingTypeDialog(onItemSelected: (selectedType: Int) -> Unit ) {
+        val listItems = resources.getStringArray(R.array.items_type_post)
+
+        AlertDialog.Builder(this)
+                .setTitle(R.string.dialog_title_choose_type)
+                .setItems(listItems) { dialog, which ->
+                    when (which) {
+                        0 -> onItemSelected(PostListRequestParams.POPULAR)
+                        1 -> onItemSelected(PostListRequestParams.NEW)
+                    }
+
+                    dialog.dismiss()
+                }
+                .show()
     }
 }
