@@ -1,6 +1,7 @@
 package ru.saptan.anonym.presentation.post.detail
 
 import com.arellomobile.mvp.InjectViewState
+import ru.saptan.anonym.R
 import ru.saptan.anonym.app.injections.scopes.PerActivity
 import ru.saptan.anonym.domain.interactors.post.IPostInteractor
 import ru.saptan.anonym.presentation.common.ABasePresenter
@@ -40,5 +41,13 @@ class PostDetailPresenter @Inject constructor(
 
                 }
         ))
+    }
+
+    fun onCommentMoreClicked() {
+        viewState.showToast(R.string.please_auth)
+    }
+
+    fun onLikeClicked() {
+        viewState.showToast(R.string.please_auth)
     }
 }

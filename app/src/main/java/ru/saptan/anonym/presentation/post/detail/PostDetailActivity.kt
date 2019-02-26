@@ -35,6 +35,9 @@ class PostDetailActivity : ABaseActivity(), IPostDetailView {
         super.onCreate(savedInstanceState)
         setTitleToolbar(R.string.app_name)
         showBackArrowInToolBar(true)
+
+        csavComments.setOnClickListener { presenter.onCommentMoreClicked() }
+        csavLikes.setOnClickListener { presenter.onLikeClicked() }
     }
 
 

@@ -98,6 +98,9 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
                                     android:layout_marginStart="10dp"
+                                    android:background="?attr/selectableItemBackground"
+                                    android:clickable="true"
+                                    android:focusable="true"
                                     app:content_align="LEFT"
                                     app:icon="@drawable/ic_like"
                                     app:title="понравилось" />
@@ -110,6 +113,9 @@
                                     android:layout_gravity="center"
                                     android:layout_marginStart="10dp"
                                     android:layout_marginEnd="10dp"
+                                    android:background="?attr/selectableItemBackground"
+                                    android:clickable="true"
+                                    android:focusable="true"
                                     app:content_align="CENTER"
                                     app:icon="@drawable/ic_share"
                                     app:title="поделиться" />
@@ -120,6 +126,9 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical|end"
                                     android:layout_marginStart="10dp"
+                                    android:background="?attr/selectableItemBackground"
+                                    android:clickable="true"
+                                    android:focusable="true"
                                     app:content_align="RIGHT"
                                     app:icon="@drawable/ic_comment"
                                     app:title="комментарии" />

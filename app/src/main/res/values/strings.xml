@@ -7,6 +7,7 @@
     <string name="dialog_title_choose_type">Выберите тип</string>
     <string name="type_post_popular">Набирающее популярность</string>
     <string name="type_post_new">Новое</string>
+    <string name="please_auth">Пожалуйста авторизуйтесь</string>
 
     <string-array name="items_type_post">
         <item>@string/type_post_popular</item>
