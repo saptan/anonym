@@ -25,6 +25,7 @@ class Post(var id: Int = 0, var text: String? = null, var date: Long? = 0L, var 
     fun getCountLikes() = likes?.count ?: 0
     fun getCountComments() = comments?.count ?: 0
     fun getCountReposts() = countReposts ?: 0
+    fun getCountViews() = postviews?.count ?: 0
 
 }
 

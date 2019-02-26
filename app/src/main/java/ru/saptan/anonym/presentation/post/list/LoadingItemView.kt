@@ -14,6 +14,5 @@ class LoadingItemView @JvmOverloads constructor(context: Context,
                                                 defStyleAttr: Int = 0
 ) : ABaseView(context, attrs, defStyleAttr), IListItemView<Post> {
 
-    override fun bind(item: Post) {
-    }
+    override fun bind(item: Post) {    }
 }

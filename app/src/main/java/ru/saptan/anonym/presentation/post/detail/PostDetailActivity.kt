@@ -44,6 +44,7 @@ class PostDetailActivity : ABaseActivity(), IPostDetailView {
         csavLikes.setCountActions(post.getCountLikes())
         csavComments.setCountActions(post.getCountComments())
         csavReposts.setCountActions(post.getCountReposts())
+        csavViews.setCountActions(post.getCountViews())
 
         val url: String? = post.getPreviewPhotoUrl()
         ivPhotoAttachment.setVisibility(url != null)

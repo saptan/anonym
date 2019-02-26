@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/gray_300">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -26,7 +27,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -40,12 +42,12 @@
                     android:focusable="true"
                     app:cardBackgroundColor="@color/colorPrimary"
                     app:cardCornerRadius="8dp"
-                    app:cardElevation="2dp"
-                    app:cardUseCompatPadding="true">
+                    app:cardElevation="2dp">
 
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -87,8 +89,8 @@
                             <FrameLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginEnd="10dp">
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp">
 
                                 <ru.saptan.anonym.presentation.common.CounterSocialActionsView
                                     android:id="@+id/csavLikes"
@@ -125,7 +127,24 @@
                             </FrameLayout>
                         </LinearLayout>
 
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_margin="8dp"
+                            android:background="@drawable/bg_widget_count_views">
 
+                            <ru.saptan.anonym.presentation.common.CounterSocialActionsView
+                                android:id="@+id/csavViews"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:paddingStart="4dp"
+                                android:paddingEnd="4dp"
+                                app:content_align="LEFT"
+                                app:icon="@drawable/ic_views" />
+
+                        </FrameLayout>
                     </FrameLayout>
 
 
