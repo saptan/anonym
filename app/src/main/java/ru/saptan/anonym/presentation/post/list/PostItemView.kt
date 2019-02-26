@@ -18,7 +18,14 @@ class PostItemView @JvmOverloads constructor(context: Context,
 ) : ABaseView(context, attrs, defStyleAttr), IListItemView<Post> {
 
     override fun bind(item: Post) {
-        tvDescription.text = item.text
+        loadImage(item)
+        setText(item.text)
+        setLikesCount(item.getCountLikes())
+        setCommentsCount(item.getCountComments())
+        setReportsCount(item.getCountReposts())
+    }
+
+    fun loadImage(item: Post) {
         val url: String? = item.getPreviewPhotoUrl()
         ivPhotoAttachment.setVisibility(url != null)
         ivPhotoAttachment.setImageDrawable(null)
@@ -26,9 +33,19 @@ class PostItemView @JvmOverloads constructor(context: Context,
                 .load(url)
                 .placeholder(R.drawable.ic_placeholder)
                 .into(ivPhotoAttachment)
+    }
 
-        csavLikes.setCountActions(item.getCountLikes())
-        csavComments.setCountActions(item.getCountComments())
-        csavReposts.setCountActions(item.getCountReposts())
+    fun setText(text: String?) {
+        tvDescription.text = text
+    }
+
+    fun setLikesCount(count: Int) {
+        csavLikes.setCountActions(count)
+    }
+    fun setCommentsCount(count: Int) {
+        csavComments.setCountActions(count)
+    }
+    fun setReportsCount(count: Int) {
+        csavReposts.setCountActions(count)
     }
 }
